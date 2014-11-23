@@ -1,6 +1,4 @@
-# ZEISS VR ONE SDK Release Notes
-
-updated: Oct 9th, 2014
+# ZEISS VR ONE SDK
 
 Table of Contents:
 
@@ -55,7 +53,7 @@ To maximize user experience, we add pre-distortion effects optimized for dedicat
 * Apple iPhone 6
 * Samsung Galaxy S5
 
-*Important note:* the currently included pre-distortion functionality is not considered to be final. Compatibility is being extended in future. This list is being updated accordingly.
+*Important note:* Compatibility is being extended in future. This list is being updated accordingly.
 
 Please also check the availability of VR ONE smartphone drawers for certain models on the tumblr blog: http://zeissvrone.tumblr.com/
 
