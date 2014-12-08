@@ -17,6 +17,7 @@ Table of Contents:
 * [When should I use VR ONE SDK?](#markdown-header-when-should-i-use-vr-one-sdk)
 * [What about Head-Tracking?](#markdown-header-what-about-head-tracking)
 * [What are the requirements to use the Unity package?](#markdown-header-what-are-the-requirements-to-use-the-unity-package)
+* [What else do you provide?](#markdown-header-what-else-do-you-provide)
 * [Which smartphones are currently supported?](#markdown-header-which-smartphones-are-currently-supported)
 * [Give me a Demo](#markdown-header-give-me-a-demo)
 * [Getting started](#markdown-header-getting-started)
@@ -57,6 +58,19 @@ The head-tracking plugin provided by ZEISS makes use of all the motion sensors a
 ## What are the requirements to use the Unity package?
 
 For using the pre-distortion functionality, you need a Unity Pro license with at least a iOS or Android platform license. If you use our integrated iOS Head-Tracking, you will need to add the SceneKit framework to the [Link Binary With Libraries] Build Phase. 
+
+## What else do you provide?
+
+Included in the VR One Unity SDK is a simple Menu-prefab, which Zeiss recommends to be integrated into any application. The menu provides two basic functionality: 
+1. View recenter, to allow the user to reposition his/her head and have the view adjusted to it.
+2. Jump to VR One Media Launcher button. 
+
+By allowing the user to navigate between VR apps directly through head-tracking accessible buttons, the VR One aims provide a consistent virtual reality experience across all the supported apps. 
+
+In the demo scene you can see a basic menu set up with a recenter icon and the jump to launcher icon.
+You can create your own menu by creating an empty game object and adding the script component `Menu.cs` to it. Each menu is naturally consisted of several buttons. The prefab also allows you to define the layout of your menu.
+
+It is important to note that you need to define a hot spot object that triggers the menu. Create such an object and add `SelectableObject.cs` to it. Next, drag and drop the menu gameobject into "Menu Prefab". You can set the menu to be active on start, define a selection time and a progress bar.
 
 ## Which smartphones are currently supported?
 
