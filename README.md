@@ -7,6 +7,7 @@ Table of Contents:
 * [What can I expect from the VR ONE SDK?](#markdown-header-what-can-i-expect-from-the-vr-one-sdk)
 * [Wait, I can use the VR ONE SDK and sell my app without paying you a cent?](#markdown-header-wait-i-can-use-the-vr-one-sdk-and-sell-my-app-without-paying-you-a-cent)
 * [When should I use VR ONE SDK?](#markdown-header-when-should-i-use-vr-one-sdk)
+* [What about Head-Tracking?](#markdown-header-what-about-headtracking)
 * [What are the requirements to use the Unity package?](#markdown-header-what-are-the-requirements-to-use-the-unity-package)
 * [Which smartphones are currently supported?](#markdown-header-which-smartphones-are-currently-supported)
 * [Give me a Demo](#markdown-header-give-me-a-demo)
@@ -26,7 +27,7 @@ The VR ONE SDK is a VR SDK for Unity and aims to help developers to create great
 
 ## What can I expect from the VR ONE SDK?
 
-The VR ONE SDK features an open soure, MIT-licensed Unity package, which provides a *split sceen* and/or *stereo two-camera* setup and applies a *configurable radial and chromatic pre-distortion effect* to prepare the image for optimal display in the VR ONE for various smartphone models. 
+The VR ONE SDK features an open source, MIT-licensed Unity package, which provides a *split sceen* and/or *stereo two-camera* setup and applies a *configurable radial and chromatic pre-distortion effect* to prepare the image for optimal display in the VR ONE for various smartphone models. 
 
 The SDK is currently in an experimental stage. A final release as well as the complete code base will be provided once the VR ONE becomes available for sale.
 
@@ -40,9 +41,14 @@ You got it. The VR ONE SDK is supposed to help you jumpstart your app developmen
 
 If you are a developer who aims to develop or adapt your mobile app for VR ONE with Unity, you will be able to jumpstart your Unity project by utilizing the VR ONE SDK. If you are using native development in Android or iOS, we will shortly support you with tutorials in the VR ONE wiki.
 
+## What about Head-Tracking?
+Together with the VR One Unity 3D SDK, Zeiss makes a sophisticated multi-sensor Head Tracking plugin, for the ultimate Virtual Reality experience.  By default, it is already activated in the VR One Unity Package, but if you wish to use your own head-tracking, you can easily deactivate it.
+
+The Head-Tracking plugin provided by Zeiss makes use of all the motion sensors available on your smartphone to 
+
 ## What are the requirements to use the Unity package?
 
-For using the pre-distortion functionality, you need a Unity Pro license with at least a iOS or Android platform license. 
+For using the pre-distortion functionality, you need a Unity Pro license with at least a iOS or Android platform license. If you use our integrated iOS Head-Tracking, you will need to add the SceneKit framework to the [Link Binary With Libraries] Build Phase. 
 
 ## Which smartphones are currently supported?
 
@@ -71,7 +77,7 @@ Using the VR ONE SDK is very simple:
 2. Drag the VR ONE SDK into your scene, and remove any other camera from your scene. 
 3. You can then associate the `VROneSDK`, the `VROneSDKHead`, and its attached GameObjects with your custom scripts for head tracking and gameplay.
 
-The VROne SDK requests 60fps on every device. Additionally interface orientation needs to be landscape left or right.
+The VROne SDK requests 60fps on every device. Additionally interface orientation in Unity should be set to landscape left.
 
 ### Changing the camera distance (mono / stereo)
 
@@ -121,6 +127,12 @@ Once your game starts set this value to `true`  and thus enable the full VROne e
 The applied distortion can be disabled (e.g. for testing without the VR ONE)
 if needed by deactivating the `VROne SDKLUTDistortion` script on the left
 and right eye of the `VROneSDK.prefab`.
+
+### Building the application
+After finishing your application in Unity, you will want to export it for use with the iPhone or Samsung Galaxy S5. In Unity, simply go to File/Build Settings, select iOS or Android, and Build. 
+
+For Android, that is all you need to do. For iOS, however, it is important to note that after the exported XCode file is built, it is necessary to add the SceneKit framework. To do this, select the application target in XCode, go to Build Phases, and under "Link Binary with Libraries", add SceneKit.framework. 
+
 
 ## Where can I ask technical questions?
 
