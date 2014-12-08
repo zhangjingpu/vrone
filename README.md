@@ -44,7 +44,7 @@ If you are a developer who aims to develop or adapt your mobile app for VR ONE w
 ## What about Head-Tracking?
 Together with the VR One Unity 3D SDK, Zeiss makes a sophisticated multi-sensor Head Tracking plugin, for the ultimate Virtual Reality experience.  By default, it is already activated in the VR One Unity Package, but if you wish to use your own head-tracking, you can easily deactivate it.
 
-The Head-Tracking plugin provided by Zeiss makes use of all the motion sensors available on your smartphone to 
+The Head-Tracking plugin provided by Zeiss makes use of all the motion sensors available on your smartphone to optimise the latency between head-movement and camera update as much as possible. This is provided as a .a library for iOS, and a .jar library for Android. A sample use for both the platforms can be found in the provided Demo Scene. 
 
 ## What are the requirements to use the Unity package?
 
