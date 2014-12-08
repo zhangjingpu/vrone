@@ -49,10 +49,10 @@ You got it. The VR ONE SDK is supposed to help you jumpstart your app developmen
 
 If you are a developer who aims to develop or adapt your mobile app for VR ONE with Unity, you will be able to jumpstart your Unity project by utilizing the VR ONE SDK. If you are using native development in Android or iOS, we will shortly support you with tutorials in the VR ONE wiki.
 
-## What about Head-Tracking?
-Together with the VR One Unity 3D SDK, Zeiss makes a sophisticated multi-sensor Head Tracking plugin, for the ultimate Virtual Reality experience.  By default, it is already activated in the VR One Unity Package, but if you wish to use your own head-tracking, you can easily deactivate it.
+## What about head-tracking?
+Together with the VR One Unity 3D SDK, ZEISS offers a multi-sensor head tracking plugin. It is already activated by default in the VR One Unity Package, but if you wish to use your own head-tracking, you can easily deactivate it.
 
-The Head-Tracking plugin provided by Zeiss makes use of all the motion sensors available on your smartphone to optimise the latency between head-movement and camera update as much as possible. This is provided as a .a library for iOS, and a .jar library for Android. A sample use for both the platforms can be found in the provided Demo Scene. 
+The head-tracking plugin provided by ZEISS makes use of all the motion sensors available on your smartphone to reduce latency between head-movement and camera update as much as possible. The plugin is is provided as a .a library for iOS, and a .jar library for Android. A sample use for both the platforms can be found in the provided demo scene. 
 
 ## What are the requirements to use the Unity package?
 
