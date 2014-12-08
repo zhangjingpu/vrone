@@ -62,8 +62,9 @@ For using the pre-distortion functionality, you need a Unity Pro license with at
 ## What else do you provide?
 
 Included in the VR One Unity SDK is a simple Menu-prefab, which Zeiss recommends to be integrated into any application. The menu provides two basic functionality: 
+
 1. View recenter, to allow the user to reposition his/her head and have the view adjusted to it.
-2. Jump to VR One Media Launcher button. 
+2.  Jump to VR One Media Launcher button. 
 
 By allowing the user to navigate between VR apps directly through head-tracking accessible buttons, the VR One aims provide a consistent virtual reality experience across all the supported apps. 
 
