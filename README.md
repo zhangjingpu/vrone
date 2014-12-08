@@ -15,7 +15,7 @@ Table of Contents:
 * [What can I expect from the VR ONE SDK?](#markdown-header-what-can-i-expect-from-the-vr-one-sdk)
 * [Wait, I can use the VR ONE SDK and sell my app without paying you a cent?](#markdown-header-wait-i-can-use-the-vr-one-sdk-and-sell-my-app-without-paying-you-a-cent)
 * [When should I use VR ONE SDK?](#markdown-header-when-should-i-use-vr-one-sdk)
-* [What about Head-Tracking?](#markdown-header-what-about-headtracking)
+* [What about Head-Tracking?](#markdown-header-what-about-head-tracking)
 * [What are the requirements to use the Unity package?](#markdown-header-what-are-the-requirements-to-use-the-unity-package)
 * [Which smartphones are currently supported?](#markdown-header-which-smartphones-are-currently-supported)
 * [Give me a Demo](#markdown-header-give-me-a-demo)
