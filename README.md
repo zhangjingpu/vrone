@@ -15,9 +15,9 @@ Table of Contents:
 * [What can I expect from the VR ONE SDK?](#markdown-header-what-can-i-expect-from-the-vr-one-sdk)
 * [Wait, I can use the VR ONE SDK and sell my app without paying you a cent?](#markdown-header-wait-i-can-use-the-vr-one-sdk-and-sell-my-app-without-paying-you-a-cent)
 * [When should I use VR ONE SDK?](#markdown-header-when-should-i-use-vr-one-sdk)
-* [What about Head-Tracking?](#markdown-header-what-about-head-tracking)
+* [NEW: The VR ONE low-latency head-tracker](#markdown-header-new-the-vr-one-low-latency-head-tracker)
 * [What are the requirements to use the Unity package?](#markdown-header-what-are-the-requirements-to-use-the-unity-package)
-* [What else do you provide?](#markdown-header-what-else-do-you-provide)
+* [NEW: The VR ONE touchless User Interface](#markdown-header-new-the-vr-one-touchless-user-interface)
 * [Which smartphones are currently supported?](#markdown-header-which-smartphones-are-currently-supported)
 * [Give me a Demo](#markdown-header-give-me-a-demo)
 * [Getting started](#markdown-header-getting-started)
@@ -50,7 +50,7 @@ You got it. The VR ONE SDK is supposed to help you jumpstart your app developmen
 
 If you are a developer who aims to develop or adapt your mobile app for VR ONE with Unity, you will be able to jumpstart your Unity project by utilizing the VR ONE SDK. If you are using native development in Android or iOS, we will shortly support you with tutorials in the VR ONE wiki.
 
-## What about head-tracking?
+## NEW: The VR ONE low-latency head-tracker
 Together with the VR One Unity 3D SDK, ZEISS offers a multi-sensor head tracking plugin. It is already activated by default in the VR One Unity Package, but if you wish to use your own head-tracking, you can easily deactivate it.
 
 The head-tracking plugin provided by ZEISS makes use of all the motion sensors available on your smartphone to reduce latency between head-movement and camera update as much as possible. The plugin is is provided as a .a library for iOS, and a .jar library for Android. A sample use for both the platforms can be found in the provided demo scene. 
@@ -59,12 +59,12 @@ The head-tracking plugin provided by ZEISS makes use of all the motion sensors a
 
 For using the pre-distortion functionality, you need a Unity Pro license with at least a iOS or Android platform license. If you use our integrated iOS Head-Tracking, you will need to add the SceneKit framework to the [Link Binary With Libraries] Build Phase. 
 
-## What else do you provide?
+## NEW: The VR ONE touchless User Interface
 
-Included in the VR One Unity SDK is a simple Menu-prefab, which Zeiss recommends to be integrated into any application. The menu provides two basic functionality: 
+Included in the VR One Unity SDK is a Menu-prefab, which Zeiss recommends to be integrated into any application. The menu provides two basic functionality: 
 
 1. View recenter, to allow the user to reposition his/her head and have the view adjusted to it.
-2.  Jump to VR One Media Launcher button. 
+2. Jump to VR One Media Launcher button. 
 
 By allowing the user to navigate between VR apps directly through head-tracking accessible buttons, the VR One aims provide a consistent virtual reality experience across all the supported apps. 
 
