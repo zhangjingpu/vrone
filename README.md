@@ -51,13 +51,10 @@ You got it. The VR ONE SDK is supposed to help you jumpstart your app developmen
 If you are a developer who aims to develop or adapt your mobile app for VR ONE with Unity, you will be able to jumpstart your Unity project by utilizing the VR ONE SDK. If you are using native development in Android or iOS, we will shortly support you with tutorials in the VR ONE wiki.
 
 ## NEW: The VR ONE low-latency head-tracker
+
 Together with the VR One Unity 3D SDK, ZEISS offers a multi-sensor head tracking plugin. It is already activated by default in the VR One Unity Package, but if you wish to use your own head-tracking, you can easily deactivate it.
 
 The head-tracking plugin provided by ZEISS makes use of all the motion sensors available on your smartphone to reduce latency between head-movement and camera update as much as possible. The plugin is is provided as a .a library for iOS, and a .jar library for Android. A sample use for both the platforms can be found in the provided demo scene. 
-
-## What are the requirements to use the Unity package?
-
-For using the pre-distortion functionality, you need a Unity Pro license with at least a iOS or Android platform license. If you use our integrated iOS Head-Tracking, you will need to add the SceneKit framework to the [Link Binary With Libraries] Build Phase. 
 
 ## NEW: The VR ONE touchless User Interface
 
@@ -72,6 +69,10 @@ In the demo scene you can see a basic menu set up with a recenter icon and the j
 You can create your own menu by creating an empty game object and adding the script component `Menu.cs` to it. Each menu is naturally consisted of several buttons. The prefab also allows you to define the layout of your menu.
 
 It is important to note that you need to define a hot spot object that triggers the menu. Create such an object and add `SelectableObject.cs` to it. Next, drag and drop the menu gameobject into "Menu Prefab". You can set the menu to be active on start, define a selection time and a progress bar.
+
+## What are the requirements to use the Unity package?
+
+For using the pre-distortion functionality, you need a Unity Pro license with at least a iOS or Android platform license. If you use our integrated iOS Head-Tracking, you will need to add the SceneKit framework to the [Link Binary With Libraries] Build Phase. 
 
 ## Which smartphones are currently supported?
 
