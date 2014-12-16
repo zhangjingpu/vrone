@@ -16,6 +16,7 @@ Table of Contents:
 * [Wait, I can use the VR ONE SDK and sell my app without paying you a cent?](#markdown-header-wait-i-can-use-the-vr-one-sdk-and-sell-my-app-without-paying-you-a-cent)
 * [When should I use VR ONE SDK?](#markdown-header-when-should-i-use-vr-one-sdk)
 * [What about Head-Tracking?](#markdown-header-what-about-head-tracking)
+* [How do I use the head-tracking library natively, without Unity?](#markdown-header-how-do-i-use-the-head-tracking-library-natively-without-unity)
 * [What are the requirements to use the Unity package?](#markdown-header-what-are-the-requirements-to-use-the-unity-package)
 * [What else do you provide?](#markdown-header-what-else-do-you-provide)
 * [Which smartphones are currently supported?](#markdown-header-which-smartphones-are-currently-supported)
@@ -74,7 +75,7 @@ Re-calibrates the view's zero reference. Can be called, for instance, from appli
 It is also important to note that this library requires the use of `CoreMotion.framework` and `SceneKit.framework`, which should be added to XCode's `Link Binary with Libraries` Build Phases.
 
 #### Android
-In order to use the .jar (available [here](https://bitbucket.org/vrone/unity3d/src/046156661b834aca2b5a242c85f756ed044574ca/Assets/Plugins/Android/androidsensorfusion.jar?at=master)) VR One Head-Tracking library with your native Android application, simply `import de.zeiss.mmd.headtracking` to your project, and you can then call the `public static double[] getRotation(Context context)` function. For the calculations done internally, the function requires the context it is called from. As the head tracking is optimized for 60 fps, the function should be called approximatly 60 times per second. The double array delivered represents the four Quaternion components, ordered as x, y, z, and w. 
+In order to use the .jar (available [here](https://bitbucket.org/vrone/unity3d/src/97cd2c138fef7dc6ecf5876d3154e7fc9e4d3318/Assets/Plugins/Android/androidsensorfusion.jar?at=master)) VR One Head-Tracking library with your native Android application, simply `import de.zeiss.mmd.headtracking` to your project, and you can then call the `public static double[] getRotation(Context context)` function. For the calculations done internally, the function requires the context it is called from. As the head tracking is optimized for 60 fps, the function should be called approximatly 60 times per second. The double array delivered represents the four Quaternion components, ordered as x, y, z, and w. 
 
 
 ## What are the requirements to use the Unity package?
