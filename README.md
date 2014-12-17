@@ -75,7 +75,7 @@ Re-calibrates the view's zero reference. Can be called, for instance, from appli
 It is also important to note that this library requires the use of `CoreMotion.framework` and `SceneKit.framework`, which should be added to XCode's `Link Binary with Libraries` Build Phases.
 
 #### Android
-In order to use the .jar (available [here](https://bitbucket.org/vrone/unity3d/src/97cd2c138fef7dc6ecf5876d3154e7fc9e4d3318/Assets/Plugins/Android/androidsensorfusion.jar?at=master)) VR One Head-Tracking library with your native Android application, simply `import de.zeiss.mmd.headtracking` to your project, and you can then call the `public static double[] getRotation(Context context)` function. For the calculations done internally, the function requires the context it is called from. As the head tracking is optimized for 60 fps, the function should be called approximatly 60 times per second. The double array delivered represents the four Quaternion components, ordered as x, y, z, and w. 
+In order to use the .jar (available [here](https://bitbucket.org/vrone/unity3d/src/410d18eb0ed3dded066106ae55ba8fe1b3f857de/Assets/Plugins/Android/androidsensorfusion.jar?at=master)) VR One Head-Tracking library with your native Android application, simply `import de.zeiss.mmd.headtracking` to your project, and you can then call the `public static double[] getRotation(Context context)` function. For the calculations done internally, the function requires the context it is called from. As the head tracking is optimized for 60 fps, the function should be called approximatly 60 times per second. The double array delivered represents the four Quaternion components, ordered as x, y, z, and w. 
 
 
 ## What are the requirements to use the Unity package?
