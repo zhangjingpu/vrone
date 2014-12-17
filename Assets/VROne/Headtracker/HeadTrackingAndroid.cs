@@ -13,7 +13,7 @@ public static class HeadTrackingAndroid {
 	public static void Initialize () {
 		AndroidJavaClass actClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 		playerActivityContext = actClass.GetStatic<AndroidJavaObject>("currentActivity");
-		jc = new AndroidJavaClass("de.innoactive.AndroidSensorFusion.AndroidSensorFusion");
+		jc = new AndroidJavaClass("de.zeiss.mmd.vroneheadtracking.AndroidSensorFusion");
 		initialized = true;
 		//jc.CallStatic("setFactors", 1.0f, 0.0f);
 	}
