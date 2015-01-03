@@ -54,7 +54,16 @@ namespace VROne
 					model = VROneSDKSupportedDeviceModel.iPhone6;
 				}
 			} else if (Application.platform == RuntimePlatform.Android) {
-				if (deviceModel.Contains ("SM-G900F") || deviceModel.Contains("SM-G906S")) {
+				if (deviceModel.Contains("SM-G900F") ||
+					deviceModel.Contains("SM-G906S") ||
+					deviceModel.Contains("SM-G900I") ||
+					deviceModel.Contains("SM-G900K") ||
+					deviceModel.Contains("SM-G900L") ||
+					deviceModel.Contains("SM-G900S") ||
+					deviceModel.Contains("SM-G900M") ||
+					deviceModel.Contains("SM-G900A") ||
+					deviceModel.Contains("SM-G900T") ||
+					deviceModel.Contains("SM-G900W8")) {
 					model = VROneSDKSupportedDeviceModel.GalaxyS5;
 				}
 			} else {
