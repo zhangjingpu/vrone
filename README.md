@@ -1,6 +1,15 @@
 # Release Notes VR ONE Unity 3D SDK 1.2
 
 * Added support for all Galaxy S5 models
+
+----
+
+# Release Notes VR ONE Unity 3D SDK 1.1
+
+* Added native head tracking plugins
+* Added VR One default menu
+* Updated LUTs
+
 ----
 
 # ZEISS VR ONE SDK
