@@ -54,16 +54,8 @@ namespace VROne
 					model = VROneSDKSupportedDeviceModel.iPhone6;
 				}
 			} else if (Application.platform == RuntimePlatform.Android) {
-				if (deviceModel.Contains("SM-G900F") ||
-					deviceModel.Contains("SM-G906S") ||
-					deviceModel.Contains("SM-G900I") ||
-					deviceModel.Contains("SM-G900K") ||
-					deviceModel.Contains("SM-G900L") ||
-					deviceModel.Contains("SM-G900S") ||
-					deviceModel.Contains("SM-G900M") ||
-					deviceModel.Contains("SM-G900A") ||
-					deviceModel.Contains("SM-G900T") ||
-					deviceModel.Contains("SM-G900W8")) {
+				if (deviceModel.Contains("SM-G900") ||
+					deviceModel.Contains("SM-G906S") {
 					model = VROneSDKSupportedDeviceModel.GalaxyS5;
 				}
 			} else {
@@ -71,6 +63,8 @@ namespace VROne
 				// unity editor is not supported, simulate iPhone
 				model = VROneSDKSupportedDeviceModel.iPhone6;
 				#endif
+				model = VROneSDKSupportedDeviceModel.GalaxyS5;
+
 			}
 
 			#if DEBUG
