@@ -5,7 +5,7 @@ namespace VROne
 {
 	public class VrHeadTracking : MonoBehaviour {
 
-
+		public bool resetViewOnTouch = false;
 		public static VrHeadTracking instance;
 
 		// Use this for initialization
@@ -38,18 +38,17 @@ namespace VROne
 		void Update() {
 	#if UNITY_IPHONE && !UNITY_EDITOR
 			Quaternion rot = HeadTrackingIOS.GetQuaternionUpdate();
-			if (recenter)
+			if (recenter || resetViewOnTouch && (Input.touchCount > 0))
 			{
 				initialRotation = rot;
 				recenter = false;
 			}
-			//Quaternion.Euler(new Vector3(90,0,0))
 			transform.rotation = Quaternion.Inverse(initialRotation) * rot; //works for landscape left
 	#endif
 	#if UNITY_ANDROID && !UNITY_EDITOR
 			Quaternion rot = HeadTrackingAndroid.GetQuaternionUpdate();
 			transform.rotation = Quaternion.Inverse(initialRotation) * rot; //works for landscape left
-			if (recenter)
+			if (recenter || resetViewOnTouch && (Input.touchCount > 0))
 			{
 				initialRotation = rot;
 				recenter = false;

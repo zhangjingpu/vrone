@@ -24,5 +24,10 @@ public static class HeadTrackingAndroid {
 		double[] q = jc.CallStatic<double[]>("getRotation", playerActivityContext);
 		return new Quaternion((float)q[0], (float)q[1], (float)q[2], (float)q[3]);
 	}
+
+	// Gyro calibration
+	public static void CalibrateGyro () {
+		jc.CallStatic("calibrateGyro");
+	}
 #endif
 }

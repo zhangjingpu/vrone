@@ -1,3 +1,15 @@
+# Release Notes VR ONE Unity 3D SDK 1.3
+
+* Added support for Google Nexus 5, LG G3, Samsung Galaxy S4, Samsung Galaxy S6
+* Added Immersive Mode to hide soft buttons for Google Nexus 5 and LG G3 (Thanks to Rakshith Anand)
+* Added SimpleMenu.prefab for easy menu integration
+* Added new LUTs
+* Added possibility to disable distortion
+* Added image shift with device specific values, if distortion is disabled
+* Added headtracking for android devices without game rotation vector (Samsung Galaxy S4)
+
+----
+
 # Release Notes VR ONE Unity 3D SDK 1.2
 
 * Added support for all Galaxy S5 models
@@ -32,6 +44,7 @@ Table of Contents:
 * [Enabling / disabling VR ONE](#markdown-header-enabling-disabling-vr-one)
 * [Enabling / disabling the pre-distortion](#markdown-header-enabling-disabling-the-pre-distortion)
 * [How can I contribute to VR ONE SDK development?](#markdown-header-how-can-i-contribute-to-vr-one-sdk-development)
+* [Why does my screen rotate?](#markdown-why-does-my-screen-rotate)
 
 ## About ZEISS VR ONE
 
@@ -90,7 +103,9 @@ For using the pre-distortion functionality, you need a Unity Pro license with at
 
 ## What else do you provide?
 
-Included in the VR One Unity SDK is a simple Menu-prefab, which Zeiss recommends to be integrated into any application. The menu provides two basic functionality: 
+The VR One Unity SDK provides you with a menu which can be created in two diffrent ways. First By using the Menu-prefab 'MenuWithHotspot', which Zeiss recommends to be integrated into any application or creating one of your own.
+
+####Menu-prefab provides two basic functionality: 
 
 1. View recenter, to allow the user to reposition his/her head and have the view adjusted to it.
 2.  Jump to VR One Media Launcher button. 
@@ -98,18 +113,23 @@ Included in the VR One Unity SDK is a simple Menu-prefab, which Zeiss recommends
 By allowing the user to navigate between VR apps directly through head-tracking accessible buttons, the VR One aims provide a consistent virtual reality experience across all the supported apps. 
 
 In the demo scene you can see a basic menu set up with a recenter icon and the jump to launcher icon.
-You can create your own menu by creating an empty game object and adding the script component `Menu.cs` to it. Each menu is naturally consisted of several buttons. The prefab also allows you to define the layout of your menu.
+
+####Creating your own menu
+
+You can create your own menu by creating an empty game object and adding the script component `Menu.cs` to it. Each menu is naturally consisted of several buttons. The prefab also allows you to define the layout of your menu. 
 
 It is important to note that you need to define a hot spot object that triggers the menu. Create such an object and add `SelectableObject.cs` to it. Next, drag and drop the menu gameobject into "Menu Prefab". You can set the menu to be active on start, define a selection time and a progress bar.
 
 ## Which smartphones are currently supported?
 
-The VR ONE SDK will work with the *iPhone 6 as well as most recent Android 4 smartphones* right out of the box. 
-
-To maximize user experience, we add pre-distortion effects optimized for dedicated smartphones. For beginning, we include pre-distortion support for the following models.
+The VR ONE SDK will work with the following smartphone models.
 
 * Apple iPhone 6
+* LG G3
+* Google Nexus 5
+* Samsung Galaxy S4
 * Samsung Galaxy S5
+* Samsung Galaxy S6
 
 *Important note:* Compatibility is being extended in future. This list is being updated accordingly.
 
@@ -176,14 +196,23 @@ Once your game starts set this value to `true`  and thus enable the full VROne e
 
 ### Disabling / Enabling the pre-distortion
 
-The applied distortion can be disabled (e.g. for testing without the VR ONE)
-if needed by deactivating the `VROne SDKLUTDistortion` script on the left
-and right eye of the `VROneSDK.prefab`.
+The applied distortion can be disabled (e.g. for higher performance)
+if needed by using
+
+```
+VROneSDK.sharedInstance.isDistortionEnabled = false;
+```
+
+If distortion is disabled, the eye images are shifted by the device specific value `A` to fit the physical distance of the VR One Lenses.
+The values for all supported smartphones are given in VROneSDKDevice.cs.
+See http://developers.zeissvrone.com/img/image_shift.gif for more information.
+
 
 ### Building the application
-After finishing your application in Unity, you will want to export it for use with the iPhone or Samsung Galaxy S5. In Unity, simply go to File/Build Settings, select iOS or Android, and Build. 
+After finishing your application in Unity, you will want to export it for use with the iPhone or Android device. In Unity, simply go to File/Build Settings, select iOS or Android, and Build. 
 
-For Android, that is all you need to do. For iOS, however, it is important to note that after the exported XCode file is built, it is necessary to add the SceneKit framework. To do this, select the application target in XCode, go to Build Phases, and under "Link Binary with Libraries", add SceneKit.framework. 
+For Android, that is all you need to do. For iOS, however, it is important to note that after the exported XCode file is built, it is necessary to add the SceneKit framework. To do this, select the application target in XCode, go to Build Phases, and under "Link Binary with Libraries", add SceneKit.framework.
+    Moreover in player settings you have to set Open GL ES 3.0 as Graphics API (iOS Metal is not supported).
 
 
 ## Where can I ask technical questions?
@@ -200,3 +229,7 @@ If your question has not already been answered, feel free to submit your questio
 * Help other users by answering their questions at [stackoverflow](http://stackoverflow.com/questions/tagged/vrone)
 * submit any issues in the [bitbucket issue tracker](https://bitbucket.org/vrone/unity3d/issues?status=new&status=open)
 * help us to fix issues and contribute by actively developing with us.
+
+## Why does my screen rotate?
+
+* For the Samsung Galaxy S4 there's a gyro callibration which takes place at app start. To avoid a bad calibration, the smartphone has to lie still, till the app is started.

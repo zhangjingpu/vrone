@@ -39,7 +39,21 @@ namespace VROne
 				eyeRight.IPD = value;
 			}
 		}
-
+		
+		public float A {
+			get {
+				return eyeRight.A;
+			}
+			set {
+				/*
+				 * As soon as A changes, both eyes need to
+				 * be adapted accordingly.
+				 */
+				eyeLeft.A = value;
+				eyeRight.A = value;
+			}
+		}
+		
 		/**
 		 * VROne is enabled only if both eyes are enabled.
 		 * Accordingly will both eyes be updated upon change.
@@ -53,6 +67,17 @@ namespace VROne
 				eyeRight.isVROneEnabled = value;
 			}
 		}
+		
+		public bool isDistortionEnabled{
+			get {
+				return eyeLeft.isDistortionEnabled && eyeRight.isDistortionEnabled;
+			}
+			set {
+				eyeLeft.isDistortionEnabled = value;
+				eyeRight.isDistortionEnabled = value;
+			}
+		}
+
 
 		/**
 		 * Left eye of the VROneSDK. Contains the left camera.

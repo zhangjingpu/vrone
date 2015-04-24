@@ -14,8 +14,12 @@ namespace VROne
 	public enum VROneSDKSupportedDeviceModel : int {
 		Unsupported,
 
-		iPhone6, // iPhone7,2
-		GalaxyS5, // SM-G900F
+		iPhone6,	// iPhone7,2
+		GalaxyS4,	// GT-I95..., SHV-E3..., SCH-I545, SPH-L720, SCH-R970, SGH-M919, SCH-R970, SGH-I337, SCH-I959, SC-04E
+		GalaxyS5,	// SM-G90...
+		GalaxyS6, 	// SM-G920T, SM-G925T, SM-G920F
+		LG_G3,		// LG-D855
+		Nexus5,		// LG-D820, LG-D821, LG Nexus 5
 	}
 
 	/**
@@ -30,6 +34,7 @@ namespace VROne
 		 * The device currently running the app.
 		 */
 		private static readonly VROneSDKDevice _sharedInstance = new VROneSDKDevice ();
+
 		public static VROneSDKDevice sharedInstance {
 			get  {
 				return _sharedInstance; 
@@ -37,12 +42,11 @@ namespace VROne
 		}
 
 		/**
-		 * Private initializer, if running in the editor iPhone 6 will be simulated.
+		 * Private initializer, if running in the editor or unsuported, Galaxy S5 will be used as fallback.
 		 */
 		private VROneSDKDevice () {
 			// default value
 			model = VROneSDKSupportedDeviceModel.Unsupported;
-
 			var deviceModel = SystemInfo.deviceModel;
 			if (Application.platform == RuntimePlatform.IPhonePlayer) {
 				if (deviceModel == "iPhone7,2") { // iPhoneGeneration.iPhone6
@@ -52,26 +56,64 @@ namespace VROne
 					}
 					#endif
 					model = VROneSDKSupportedDeviceModel.iPhone6;
+					A = 0.04791f;
 				}
 			} else if (Application.platform == RuntimePlatform.Android) {
-				if (deviceModel.Contains("SM-G900") ||
-					deviceModel.Contains("SM-G906S") {
-					model = VROneSDKSupportedDeviceModel.GalaxyS5;
+				if (deviceModel.Contains("GT-I95") ||
+				    deviceModel.Contains("SHV-E3") ||
+				    deviceModel.Contains ("SCH-I545") ||
+				    deviceModel.Contains ("SPH-L720") ||
+				    deviceModel.Contains ("SCH-R970") ||
+				    deviceModel.Contains ("SGH-M919") ||
+				    deviceModel.Contains ("SCH-R970") ||
+				    deviceModel.Contains ("SGH-I337") ||
+				    deviceModel.Contains ("SCH-I959") ||
+				    deviceModel.Contains ("SC-04E") )
+				{
+					model = VROneSDKSupportedDeviceModel.GalaxyS4;
+					A = 0.03059f;
 				}
+				else if (deviceModel.Contains("SM-G90") )
+				{
+					model = VROneSDKSupportedDeviceModel.GalaxyS5;
+					A = 0.02454f;
+				}
+				else if (deviceModel.Contains ("SM-G920T") ||
+				         deviceModel.Contains ("SM-G925T") ||
+				         deviceModel.Contains ("SM-G920F"))
+				{
+					model = VROneSDKSupportedDeviceModel.GalaxyS6;
+					A = 0.02527f;
+				}
+				else if (deviceModel.Contains("D820") ||
+				         deviceModel.Contains("D821") ||
+				         deviceModel.Contains("LGE Nexus 5") )
+				{
+					model = VROneSDKSupportedDeviceModel.Nexus5;
+					A = 0.03576f;
+				}
+				else if (deviceModel.Contains("LG-D855") )
+				{
+					model = VROneSDKSupportedDeviceModel.LG_G3;
+					A = 0.00458f;
+				} 
 			} else {
 				#if UNITY_EDITOR
-				// unity editor is not supported, simulate iPhone
-				model = VROneSDKSupportedDeviceModel.iPhone6;
+					// unity editor is not supported, simulate Galaxy S5
+					model = VROneSDKSupportedDeviceModel.GalaxyS5;
+					A = 0.02454f;
 				#endif
-				model = VROneSDKSupportedDeviceModel.GalaxyS5;
-
 			}
 
-			#if DEBUG
 			if (model == VROneSDKSupportedDeviceModel.Unsupported) {
+				model = VROneSDKSupportedDeviceModel.GalaxyS5;
+				A = 0.02454f;
+				#if DEBUG
 				Debug.LogError ("Unknown deviceModel: " + deviceModel + " (" + Screen.width + ", " + Screen.height + ")");
+				#endif
+
 			}
-			#endif
+			Debug.Log ("DeviceModel: " + deviceModel);
 		}
 		
 		#region Properties
@@ -87,6 +129,8 @@ namespace VROne
 		 * Device type.
 		 */
 		public VROneSDKSupportedDeviceModel model { get; private set; }
+
+		public float A { get; private set; }
 		#endregion
 	}
 

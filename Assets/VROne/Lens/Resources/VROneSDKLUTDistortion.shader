@@ -102,19 +102,19 @@ Shader "VROneSDK/LUTDistortion" {
 				float2 coord = float2(mirrored(i.uv.x), i.uv.y);
 
 				float2 xyR = LUTDistortionR(coord);
-				if (xyR.x <= 0.0f || xyR.y <= 0.0f) {
+				if (xyR.x <= 0.0f || xyR.y <= 0.0f || xyR.x >= 1.0f || xyR.y >= 1.0f) {
 					// set alpha to 1 and return.
 					return float4(res, 1.0f);
 				}
 
 				float2 xyG = LUTDistortionG(coord);
-				if (xyG.x <= 0.0f || xyG.y <= 0.0f) {
+				if (xyG.x <= 0.0f || xyG.y <= 0.0f || xyG.x >= 1.0f || xyG.y >= 1.0f) {
 					// set alpha to 1 and return.
 					return float4(res, 1.0f);
 				}
 
 				float2 xyB = LUTDistortionB(coord);
-				if (xyB.x <= 0.0f || xyB.y <= 0.0f) {
+				if (xyB.x <= 0.0f || xyB.y <= 0.0f || xyG.x >= 1.0f || xyG.y >= 1.0f) {
 					// set alpha to 1 and return.
 					return float4(res, 1.0f);
 				}

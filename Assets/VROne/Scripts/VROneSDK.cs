@@ -19,6 +19,8 @@ using System.Collections;
  * 		VROneSDK vrOneSDK = VROneSDK.sharedInstance;
  * 
  * ## Interpupillary distance (IPD)
+ * The IPD affects the local position of the eyes/cameras 
+ * relating to the head in the Unity Scene.
  * One can set the IPD using this singleton via
  * 
  * 		VROneSDK.sharedInstance.IPD = 0.065f;
@@ -27,9 +29,9 @@ using System.Collections;
  * `VROneSDK.VROneSDKDefaultIPD`.
  * 
  * ## Mono-Mode/Stereo-Mode
- * When VROne runs in mono-mode, both eyes are located
- * at the very same position. Nevertheless make sure
- * that you use set the users IPD correctly, since this
+ * When VROne runs in mono-mode, both eyes/cameras are located
+ * at the very same position (IPD = 0). Nevertheless make sure
+ * that you set the users IPD correctly, since this
  * will alter the distortion!
  * 
  * Using the stereo-mode both camera position will
@@ -39,6 +41,22 @@ using System.Collections;
  * Enable/disable mono- and stereo-mode via
  * 
  * 		VROneSDK.sharedInstance.runsInStereMode = true;
+ * 
+ * ## Enable/Disable Distortion 
+ * This only has an affect, if isVROneEnabled == true !!!
+ * 
+ * When Distortion is enabled, the device-specific LUT is loaded
+ * and the the LUT Distortion is applied
+ * (default LUT for unsupported devices is the Galaxy S5 LUT)
+ * 
+ * When Distortion is disabled, the device-specific value A is loaded
+ * and the positon of the two camera viewports on the screen is shifted
+ * accordingly on the x-Axes.
+ * (default A for unsupported devices is the Galaxy S5 A)
+ * 
+ * Since there are different screen sizes, this is needed to match
+ * the physical distance of the VR One lenses.
+ * 
  * 
  * ## Enable/Disable VROne
  * When user hasn't put on the VROne yet, use 
@@ -69,8 +87,9 @@ namespace VROne
 		private VROneSDKHead _head;
 		private bool _developerMode = false;
 		private string _documentsLUTName;
-		#endregion
 
+		#endregion
+		
 		#region Properties
 		/** 
 		 * Singleton sharedInstance.
@@ -89,7 +108,7 @@ namespace VROne
 		 * Default value for IPD. Measured in meters.
 		 */
 		public const float VROneSDKDefaultIPD = 0.065f;
-
+		
 		/**
 		 * The interpupullary distance.
 		 * The IPD is the interpupillary distance (the distance between
@@ -111,7 +130,17 @@ namespace VROne
 				head.IPD = value;
 			}
 		}
-
+		
+		
+		public float A {
+			get {
+				return head.A;
+			}
+			set {
+				head.A = value;
+			}
+		}
+		
 		/**
 		 * When VROne is disabled, no distortion should be applied
 		 * to the cameras. At the same time, the camera of the left
@@ -131,7 +160,35 @@ namespace VROne
 				head.isVROneEnabled = value;
 			}
 		}
-
+		
+		/**
+		 * Using this proberty you can enable and disable distortion
+		 * This only has an affect, if isVROneEnabled == true !!!
+		 * 
+		 * When Distortion is enabled, the device-specific LUT is loaded
+		 * and the the LUT Distortion is applied
+		 * (default LUT for unsupported devices is the Galaxy S5 LUT)
+		 * 
+		 * When Distortion is disabled, the device-specific value A is loaded
+		 * and the positon of the two camera viewports on the screen is shifted
+		 * accordingly on the x-Axes.
+		 * (default A for unsupported devices is the Galaxy S5 A)
+		 * 
+		 * Since there are different screen sizes, this is needed to match
+		 * the physical distance of the VR One lenses.
+		 */
+		
+		public bool isDistortionEnabled{
+			get {
+				return head.isDistortionEnabled;
+			}
+			set {
+				head.isDistortionEnabled = value;
+			}
+			
+		}
+		
+		
 		/**
 		 * Using this property you can enabled and disable
 		 * stereo mode.
@@ -154,7 +211,7 @@ namespace VROne
 				}
 			}
 		}
-
+		
 		/**
 		 * Property neverSleep turns on and off screen dimming.
 		 * Set to `true` when game is running and VROne is put on.
@@ -167,7 +224,7 @@ namespace VROne
 				Screen.sleepTimeout = value ? SleepTimeout.NeverSleep : SleepTimeout.SystemSetting;
 			}
 		}
-
+		
 		/**
 		 * Returns or sets the frame rate for this game.
 		 */
@@ -179,7 +236,7 @@ namespace VROne
 				Application.targetFrameRate = value;
 			}
 		}
-
+		
 		/**
 		 * Head of the VROneSDK. Contains both eyes.
 		 */
@@ -191,7 +248,7 @@ namespace VROne
 				return _head;
 			}
 		}
-
+		
 		/**
 		 * Enables/disables Developer Mode.
 		 */
@@ -208,7 +265,8 @@ namespace VROne
 				}
 			}
 		}
-
+		
+		
 		/**
 		 * Holds the LUT name used when developer
 		 * mode is enabled and luts are
@@ -230,15 +288,20 @@ namespace VROne
 			}
 		}
 		#endregion
-
+		
 		#region Life cycle
-		void Start () {
+		void Start ()  {
 			// request 60 fps
 			targetFrameRate = 60;
 			// don't put screen to sleep
 			neverSleep = true;
 
-			#if UNITY_EDITOR
+
+			isVROneEnabled = true;
+			isDistortionEnabled = true;
+			runsInStereMode = true;
+
+			#if UNITY_EDITOR 
 			/*
 			 * When using the Unity Editor to run the project, this call
 			 * make sure that all assets are imported properly when
@@ -251,8 +314,9 @@ namespace VROne
 			 * they should be checked and set properly.
 			 */
 			VROneAssetImporter.importAssets ();
-			#endif
+			#endif //UNITY_EDITOR
 		}
 		#endregion
+
 	}
 }
