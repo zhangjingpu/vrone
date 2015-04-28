@@ -56,7 +56,7 @@ namespace VROne
 					}
 					#endif
 					model = VROneSDKSupportedDeviceModel.iPhone6;
-					A = 0.04791f;
+					ImageShift = 0.04791f;
 				}
 			} else if (Application.platform == RuntimePlatform.Android) {
 				if (deviceModel.Contains("GT-I95") ||
@@ -71,43 +71,43 @@ namespace VROne
 				    deviceModel.Contains ("SC-04E") )
 				{
 					model = VROneSDKSupportedDeviceModel.GalaxyS4;
-					A = 0.03059f;
+					ImageShift = 0.03059f;
 				}
 				else if (deviceModel.Contains("SM-G90") )
 				{
 					model = VROneSDKSupportedDeviceModel.GalaxyS5;
-					A = 0.02454f;
+					ImageShift = 0.02454f;
 				}
 				else if (deviceModel.Contains ("SM-G920T") ||
 				         deviceModel.Contains ("SM-G925T") ||
 				         deviceModel.Contains ("SM-G920F"))
 				{
 					model = VROneSDKSupportedDeviceModel.GalaxyS6;
-					A = 0.02527f;
+					ImageShift = 0.02527f;
 				}
 				else if (deviceModel.Contains("D820") ||
 				         deviceModel.Contains("D821") ||
 				         deviceModel.Contains("LGE Nexus 5") )
 				{
 					model = VROneSDKSupportedDeviceModel.Nexus5;
-					A = 0.03576f;
+					ImageShift = 0.03576f;
 				}
 				else if (deviceModel.Contains("LG-D855") )
 				{
 					model = VROneSDKSupportedDeviceModel.LG_G3;
-					A = 0.00458f;
+					ImageShift = 0.00458f;
 				} 
 			} else {
 				#if UNITY_EDITOR
 					// unity editor is not supported, simulate Galaxy S5
 					model = VROneSDKSupportedDeviceModel.GalaxyS5;
-					A = 0.02454f;
+					ImageShift = 0.02454f;
 				#endif
 			}
 
 			if (model == VROneSDKSupportedDeviceModel.Unsupported) {
 				model = VROneSDKSupportedDeviceModel.GalaxyS5;
-				A = 0.02454f;
+				ImageShift = 0.02454f;
 				#if DEBUG
 				Debug.LogError ("Unknown deviceModel: " + deviceModel + " (" + Screen.width + ", " + Screen.height + ")");
 				#endif
@@ -130,7 +130,7 @@ namespace VROne
 		 */
 		public VROneSDKSupportedDeviceModel model { get; private set; }
 
-		public float A { get; private set; }
+		public float ImageShift { get; private set; }
 		#endregion
 	}
 

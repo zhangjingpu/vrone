@@ -49,10 +49,10 @@ using System.Collections;
  * and the the LUT Distortion is applied
  * (default LUT for unsupported devices is the Galaxy S5 LUT)
  * 
- * When Distortion is disabled, the device-specific value A is loaded
+ * When Distortion is disabled, the device-specific value ImageShift is loaded
  * and the positon of the two camera viewports on the screen is shifted
- * accordingly on the x-Axes.
- * (default A for unsupported devices is the Galaxy S5 A)
+ * accordingly on the x-axes.
+ * (default ImageShift for unsupported devices is the Galaxy S5 ImageShift)
  * 
  * Since there are different screen sizes, this is needed to match
  * the physical distance of the VR One lenses.
@@ -131,13 +131,19 @@ namespace VROne
 			}
 		}
 		
-		
-		public float A {
+		/**
+		 * The image shift distance.
+		 * The ImageShift is the device specific value, how far the two camera viewports
+		 * has to be shifted along the x-axes
+		 * This value is used, when distortion is disabled to match
+		 * the physical distance of the VR One lenses.
+		 */
+		public float ImageShift {
 			get {
-				return head.A;
+				return head.ImageShift;
 			}
 			set {
-				head.A = value;
+				head.ImageShift = value;
 			}
 		}
 		
@@ -169,10 +175,10 @@ namespace VROne
 		 * and the the LUT Distortion is applied
 		 * (default LUT for unsupported devices is the Galaxy S5 LUT)
 		 * 
-		 * When Distortion is disabled, the device-specific value A is loaded
+		 * When Distortion is disabled, the device-specific value ImageShift is loaded
 		 * and the positon of the two camera viewports on the screen is shifted
-		 * accordingly on the x-Axes.
-		 * (default A for unsupported devices is the Galaxy S5 A)
+		 * accordingly on the x-axes.
+		 * (default ImageShift for unsupported devices is the Galaxy S5 ImageShift)
 		 * 
 		 * Since there are different screen sizes, this is needed to match
 		 * the physical distance of the VR One lenses.
@@ -295,7 +301,6 @@ namespace VROne
 			targetFrameRate = 60;
 			// don't put screen to sleep
 			neverSleep = true;
-
 
 			isVROneEnabled = true;
 			isDistortionEnabled = true;

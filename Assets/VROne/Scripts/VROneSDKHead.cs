@@ -40,17 +40,17 @@ namespace VROne
 			}
 		}
 		
-		public float A {
+		public float ImageShift {
 			get {
-				return eyeRight.A;
+				return eyeRight.ImageShift;
 			}
 			set {
 				/*
 				 * As soon as A changes, both eyes need to
 				 * be adapted accordingly.
 				 */
-				eyeLeft.A = value;
-				eyeRight.A = value;
+				eyeLeft.ImageShift = value;
+				eyeRight.ImageShift = value;
 			}
 		}
 		
