@@ -1,9 +1,8 @@
-﻿#if UNITY_ANDROID && !UNITY_EDITOR
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class ImmersiveModeEnabler : MonoBehaviour {
-
+	#if UNITY_ANDROID && !UNITY_EDITOR
 	AndroidJavaObject unityActivity;
 	AndroidJavaObject javaObj;
 	AndroidJavaClass javaClass;
@@ -96,6 +95,5 @@ public class ImmersiveModeEnabler : MonoBehaviour {
 			javaObj.CallStatic("DisableAppPin",unityActivity);
 		}
 	}
-
+	#endif //UNITY_ANDROID && !UNITY_EDITOR
 }
-#endif //UNITY_ANDROID && !UNITY_EDITOR
