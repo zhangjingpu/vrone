@@ -4,8 +4,8 @@
 * Added Immersive Mode to hide soft buttons for Google Nexus 5 and LG G3 (Thanks to Rakshith Anand)
 * Added SimpleMenu.prefab for easy menu integration
 * Added new LUTs
-* Added possibility to disable distortion
-* Added image shift with device specific values, if distortion is disabled
+* Added possibility to disable distortion in order to get additional FPS
+* Added image shift with device specific values, if distortion is disabled. This ensures that the center of left/right images are fitting the ZEISS VR ONE optics.
 * Added headtracking for android devices without game rotation vector (Samsung Galaxy S4)
 
 ----
