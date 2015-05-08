@@ -2,7 +2,7 @@
 
 * Added support for Google Nexus 5, LG G3, Samsung Galaxy S4, Samsung Galaxy S6
 * Added Immersive Mode to hide soft buttons for Google Nexus 5 and LG G3 (Thanks to Rakshith Anand)
-* Added SimpleMenu.prefab for easy menu integration
+* Added MenuWithHotspot.prefab for easy menu integration
 * Added new LUTs
 * Added possibility to disable distortion in order to get additional FPS
 * Added image shift with device specific values, if distortion is disabled. This ensures that the center of left/right images are fitting the ZEISS VR ONE optics.
@@ -116,9 +116,7 @@ In the demo scene you can see a basic menu set up with a recenter icon and the j
 
 ####Creating your own menu
 
-You can create your own menu by creating an empty game object and adding the script component `Menu.cs` to it. Each menu is naturally consisted of several buttons. The prefab also allows you to define the layout of your menu. 
-
-It is important to note that you need to define a hot spot object that triggers the menu. Create such an object and add `SelectableObject.cs` to it. Next, drag and drop the menu gameobject into "Menu Prefab". You can set the menu to be active on start, define a selection time and a progress bar.
+You can create your own menu by using `the MenuWithHotspot.prefab`. Open the `MainMenu` GameObject in the Inspector and increase the `Size` value under "Rows->Element0->Icons" to fit your needs. The desired script to be executed for a specific menu element, has to be added to the related Callback Component.
 
 ## Which smartphones are currently supported?
 
